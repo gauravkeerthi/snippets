@@ -1,15 +1,27 @@
 <template name="snippets">
   <div class="container">
+  	{{#masonryContainer id='MasonryContainer' columnWidth=25 transition='0.2s' gutter=4 }}
+	     {{#each snippets}}
+	     	{{>snippet }}
+	     {{/each}}     
+     {{/masonryContainer}}
+  </div>
+</template>
 
-    <div class="snippet">
-     <ol>
-      {{#each snippets}}
-       <li>{{text}}</li>
-      {{/each}}
-     </ol>
-    </div>
-
-
-
- </div>
+<template name="snippet">	  
+	{{#masonryElement 'MasonryContainer'}}
+	   <div class="snippet panel panel-success">
+	   	<div class="panel-heading">
+	   		<h4 class="panel-title">{{text}}</h4>
+	   	</div>
+	   	<div class="panel-body">
+	   		{{desc}}
+	   		{{URL}}
+	   		{{#if isLink}}
+	   			<a href="{{URL}}">{{URL}}</a>
+	   		{{else}}	
+	   		{{/if}}
+	   	</div>
+	   </div>
+	{{/masonryElement}}
 </template>
